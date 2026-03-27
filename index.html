@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copper Guard – Installation & User Manual | Sri Lanka Telecom</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slt-blue: #003087;
+    --slt-blue-mid: #0055c8;
+    --slt-blue-light: #1a78e6;
+    --slt-green: #00a651;
+    --slt-green-light: #00c060;
+    --white: #ffffff;
+    --off-white: #f0f5ff;
+    --light-bg: #e8f0fe;
+    --text-dark: #0a1a3a;
+    --text-mid: #334a7c;
+    --border: rgba(0,48,135,0.15);
+    --shadow: 0 4px 24px rgba(0,48,135,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--off-white);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* HERO HEADER */
+  header {
+    background: linear-gradient(135deg, var(--slt-blue) 0%, var(--slt-blue-mid) 60%, var(--slt-blue-light) 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,166,81,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 10%;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    position: relative; z-index: 2;
+  }
+  .slt-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .slt-logo-box {
+    width: 46px; height: 46px;
+    background: var(--white);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  }
+  .slt-logo-box svg { width: 30px; height: 30px; }
+  .slt-name {
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .slt-name span { color: var(--slt-green-light); }
+  .doc-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  .header-hero {
+    padding: 40px 32px 48px;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(0,166,81,0.18);
+    border: 1px solid rgba(0,192,96,0.4);
+    color: var(--slt-green-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .hero-tag::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--slt-green-light);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+  .hero-title span { color: var(--slt-green-light); }
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    font-weight: 400;
+    max-width: 480px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+  }
+  .chip {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+  .chip-icon { font-size: 1em; }
+
+  /* WAVE */
+  .wave-divider {
+    display: block;
+    width: 100%;
+    line-height: 0;
+    background: var(--slt-blue-mid);
+  }
+  .wave-divider svg { display: block; width: 100%; height: 48px; }
+
+  /* NAV */
+  .toc-bar {
+    background: var(--slt-blue);
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  }
+  .toc-inner {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+    scrollbar-width: none;
+  }
+  .toc-inner::-webkit-scrollbar { display: none; }
+  .toc-link {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 18px;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .toc-link:hover {
+    color: var(--white);
+    border-bottom-color: var(--slt-green-light);
+    background: rgba(255,255,255,0.06);
+  }
+
+  /* MAIN */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 36px 20px 60px;
+  }
+
+  /* SECTION */
+  .section {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 28px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    animation: fadeUp 0.5s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section:nth-child(1) { animation-delay: 0.05s; }
+  .section:nth-child(2) { animation-delay: 0.10s; }
+  .section:nth-child(3) { animation-delay: 0.15s; }
+  .section:nth-child(4) { animation-delay: 0.20s; }
+  .section:nth-child(5) { animation-delay: 0.25s; }
+  .section:nth-child(6) { animation-delay: 0.30s; }
+  .section:nth-child(7) { animation-delay: 0.35s; }
+  .section:nth-child(8) { animation-delay: 0.40s; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(to right, var(--light-bg), var(--white));
+  }
+  .section-num {
+    width: 34px; height: 34px;
+    background: var(--slt-blue);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--slt-blue);
+    letter-spacing: 0.02em;
+  }
+  .section-icon {
+    margin-left: auto;
+    font-size: 1.4rem;
+    opacity: 0.5;
+  }
+  .section-body {
+    padding: 22px 24px;
+  }
+
+  p {
+    color: var(--text-mid);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* PACKAGE GRID */
+  .pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .pkg-item {
+    background: var(--light-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 14px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pkg-item:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,48,135,0.1); }
+  .pkg-icon { font-size: 2rem; margin-bottom: 8px; }
+  .pkg-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--slt-blue);
+    line-height: 1.3;
+  }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; gap: 18px; }
+  .step-card {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--slt-blue), var(--slt-blue-light));
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 3px 10px rgba(0,85,200,0.3);
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--slt-blue);
+    margin-bottom: 6px;
+  }
+  .step-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  .step-list li {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+  .step-list li::before {
+    content: '›';
+    color: var(--slt-green);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    flex-shrink: 0;
+  }
+
+  /* CONFIRMATION BOX */
+  .confirm-box {
+    margin-top: 16px;
+    background: linear-gradient(135deg, rgba(0,166,81,0.08), rgba(0,166,81,0.04));
+    border: 1.5px solid rgba(0,166,81,0.35);
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .confirm-icon { font-size: 1.6rem; }
+  .confirm-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--slt-green);
+  }
+
+  /* SMS STEPS */
+  .sms-flow { display: flex; flex-direction: column; gap: 16px; }
+  .sms-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .sms-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--slt-blue), var(--slt-green));
+    border-radius: 4px 0 0 4px;
+  }
+  .sms-step-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--slt-blue);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sms-step-badge {
+    background: var(--slt-blue);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .code-pill {
+    display: inline-block;
+    background: var(--slt-blue);
+    color: var(--white);
+    font-family: monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.08em;
+    margin: 6px 0;
+  }
+  .config-list { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .config-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+  }
+  .config-dot {
+    width: 8px; height: 8px;
+    background: var(--slt-green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* LED TABLE */
+  .led-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; }
+  .led-table thead th {
+    background: var(--slt-blue);
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    text-align: left;
+  }
+  .led-table tbody tr { border-bottom: 1px solid var(--border); }
+  .led-table tbody tr:last-child { border-bottom: none; }
+  .led-table tbody tr:nth-child(even) { background: var(--light-bg); }
+  .led-table tbody td {
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    vertical-align: middle;
+  }
+  .led-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: var(--slt-blue);
+  }
+  .led-dot {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: #3c9bff;
+    box-shadow: 0 0 8px rgba(60,155,255,0.7), 0 0 20px rgba(60,155,255,0.3);
+    animation: ledGlow 2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes ledGlow {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  /* NOTES */
+  .notes-grid { display: flex; flex-direction: column; gap: 10px; }
+  .note-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--light-bg);
+    border-radius: 10px;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+  }
+  .note-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 1px; }
+  .note-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.5; }
+
+  /* EMERGENCY */
+  .emergency-card {
+    background: linear-gradient(135deg, #fff0f0, #fff5f5);
+    border: 2px solid #ffcdd2;
+    border-radius: 14px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .emergency-icon-wrap {
+    width: 56px; height: 56px;
+    background: #ff4c4c;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 14px rgba(255,76,76,0.35);
+  }
+  .emergency-label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #c0392b;
+    margin-bottom: 4px;
+  }
+  .emergency-number {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #c0392b;
+    letter-spacing: 0.04em;
+    line-height: 1;
+  }
+  .emergency-sub { font-size: 0.78rem; color: #e57373; margin-top: 4px; }
+
+  /* SUMMARY */
+  .summary-box {
+    background: linear-gradient(135deg, var(--slt-blue) 0%, var(--slt-blue-mid) 100%);
+    border-radius: 14px;
+    padding: 24px;
+    color: var(--white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary-box::before {
+    content: '✔';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.05;
+    top: -20px; right: 10px;
+  }
+  .summary-box .sum-icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .summary-box p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
+  .green-pill {
+    display: inline-block;
+    background: var(--slt-green);
+    color: var(--white);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--slt-blue);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 22px 20px;
+    font-size: 0.8rem;
+  }
+  footer strong { color: var(--white); }
+  footer .green { color: var(--slt-green-light); }
+
+  @media (max-width: 520px) {
+    .header-hero { padding: 28px 20px 36px; }
+    .section-header { padding: 16px 18px 12px; }
+    .section-body { padding: 16px 18px; }
+    .pkg-grid { grid-template-columns: 1fr 1fr; }
+    .emergency-card { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div class="slt-brand">
+      <div class="slt-logo-box">
+        <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="60" height="60" rx="10" fill="#003087"/>
+          <path d="M10 30 Q20 10 30 30 Q40 50 50 30" stroke="#00a651" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M10 38 Q20 18 30 38 Q40 58 50 38" stroke="#1a78e6" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+          <circle cx="30" cy="30" r="5" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <div class="slt-name">Sri Lanka <span>Telecom</span></div>
+        <div style="font-size:0.65rem; color:rgba(255,255,255,0.5); letter-spacing:0.08em; font-weight:600;">TELECOMMUNICATIONS</div>
+      </div>
+    </div>
+    <div class="doc-badge">📄 User Manual</div>
+  </div>
+
+  <div class="header-hero">
+    <div class="hero-tag">Protection Device</div>
+    <h1 class="hero-title">Copper<span>Guard</span></h1>
+    <p class="hero-sub">Installation & User Manual — Anti-theft protection for telecom copper infrastructure</p>
+    <div class="hero-chips">
+      <div class="chip"><span class="chip-icon">🔧</span> Easy Install</div>
+      <div class="chip"><span class="chip-icon">📱</span> SMS Setup</div>
+      <div class="chip"><span class="chip-icon">🔵</span> LED Status</div>
+      <div class="chip"><span class="chip-icon">🛡️</span> 24/7 Protection</div>
+    </div>
+  </div>
+</header>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,48 L0,24 Q150,0 300,24 Q450,48 600,24 Q750,0 900,24 Q1050,48 1200,24 L1200,48 Z" fill="#e8f0fe"/>
+  </svg>
+</div>
+
+<!-- STICKY NAV -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a class="toc-link" href="#intro">📘 Intro</a>
+    <a class="toc-link" href="#package">📦 Package</a>
+    <a class="toc-link" href="#access">📲 Access</a>
+    <a class="toc-link" href="#install">🔧 Install</a>
+    <a class="toc-link" href="#sms">💬 SMS Setup</a>
+    <a class="toc-link" href="#mount">📌 Mounting</a>
+    <a class="toc-link" href="#status">🔵 Status</a>
+    <a class="toc-link" href="#trouble">🆘 Support</a>
+    <a class="toc-link" href="#notes">⚠️ Notes</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main>
+
+  <!-- 1. INTRO -->
+  <section class="section" id="intro">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title">Introduction</div>
+      <div class="section-icon">📘</div>
+    </div>
+    <div class="section-body">
+      <p>Copper Guard is a protection device designed to <strong>prevent copper wire theft</strong> and ensure the safety of telecom infrastructure. This guide provides simple, step-by-step instructions for installation and setup.</p>
+    </div>
+  </section>
+
+  <!-- 2. PACKAGE -->
+  <section class="section" id="package">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title">Package Contents</div>
+      <div class="section-icon">📦</div>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:16px;">When you receive the cardboard box, ensure the following items are included:</p>
+      <div class="pkg-grid">
+        <div class="pkg-item">
+          <div class="pkg-icon">🛡️</div>
+          <div class="pkg-name">Copper Guard Device</div>
+        </div>
+        <div class="pkg-item">
+          <div class="pkg-icon">🔌</div>
+          <div class="pkg-name">5V 2A Power Adapter</div>
+        </div>
+        <div class="pkg-item">
+          <div class="pkg-icon">🔩</div>
+          <div class="pkg-name">Mounting Nails</div>
+        </div>
+        <div class="pkg-item">
+          <div class="pkg-icon">📱</div>
+          <div class="pkg-name">QR Code (on box)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ACCESSING MANUAL -->
+  <section class="section" id="access">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title">Accessing the Manual</div>
+      <div class="section-icon">📲</div>
+    </div>
+    <div class="section-body">
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Locate QR Code</div>
+            <p>Find the QR code printed on the cardboard box.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Scan with Phone</div>
+            <p>Use your mobile phone camera or QR scanner app to scan the code.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Manual Opens</div>
+            <p>The digital version of this manual will open automatically in your browser.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INSTALLATION -->
+  <section class="section" id="install">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title">Installation Instructions</div>
+      <div class="section-icon">🔧</div>
+    </div>
+    <div class="section-body">
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Step 1 — Connect Copper Wires</div>
+            <ul class="step-list">
+              <li>Attach the copper wires to the device</li>
+              <li>Carefully match the <strong>+ (positive)</strong> and <strong>– (negative)</strong> terminals</li>
+              <li>Follow the sticker labels on the device to ensure correct connection</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Step 2 — Connect Power Supply</div>
+            <ul class="step-list">
+              <li>Use the provided <strong>5V 2A</strong> wall adapter</li>
+              <li>Plug it into the correct power port (as indicated by the device sticker)</li>
+              <li>Switch on the power</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="confirm-box">
+        <div class="confirm-icon">✅</div>
+        <div class="confirm-text">The Power LED will light up in <strong>blue</strong>, confirming the device is powered correctly.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. SMS SETUP -->
+  <section class="section" id="sms">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title">Device Setup via SMS</div>
+      <div class="section-icon">💬</div>
+    </div>
+    <div class="section-body">
+      <div class="sms-flow">
+        <div class="sms-card">
+          <div class="sms-step-title">
+            <span class="sms-step-badge">STEP 1</span>
+            Initialize Connection
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-mid); margin-bottom:8px;">Send an SMS to the device SIM number:</p>
+          <div class="code-pill">connect</div>
+          <p style="font-size:0.85rem; color:var(--text-mid); margin-top:8px;">You will receive a <strong>reply SMS</strong> confirming the connection.</p>
+        </div>
+        <div class="sms-card">
+          <div class="sms-step-title">
+            <span class="sms-step-badge">STEP 2</span>
+            Configure Settings
+          </div>
+          <p style="font-size:0.88rem; color:var(--text-mid); margin-bottom:8px;">After receiving the reply, configure the following:</p>
+          <div class="config-list">
+            <div class="config-item"><div class="config-dot"></div>Assign names to the 4 wire inputs</div>
+            <div class="config-item"><div class="config-dot"></div>Enable or disable each wire as required</div>
+            <div class="config-item"><div class="config-dot"></div>Add an Emergency contact number</div>
+            <div class="config-item"><div class="config-dot"></div>Add an SMS notification number</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MOUNTING -->
+  <section class="section" id="mount">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title">Mounting the Device</div>
+      <div class="section-icon">📌</div>
+    </div>
+    <div class="section-body">
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <div class="step-title">Use Provided Nails</div>
+            <p>Use the nails included in the box for secure mounting.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <div class="step-title">Secure the Device</div>
+            <ul class="step-list">
+              <li>To the enclosure</li>
+              <li>And to the MSAN unit</li>
+            </ul>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <div class="step-title">Verify Stability</div>
+            <p>Ensure the device is firmly attached and protected from movement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. STATUS -->
+  <section class="section" id="status">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <div class="section-title">Status Indicators</div>
+      <div class="section-icon">🔵</div>
+    </div>
+    <div class="section-body">
+      <table class="led-table">
+        <thead>
+          <tr>
+            <th>LED Status</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="led-indicator"><div class="led-dot"></div>Blue LED ON</div></td>
+            <td>Power is supplied and device is active</td>
+          </tr>
+          <tr>
+            <td><div class="led-indicator"><div class="led-dot" style="animation: ledGlow 0.4s infinite;"></div>Blue LED (Error)</div></td>
+            <td>Device has detected an issue</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 8. TROUBLESHOOTING -->
+  <section class="section" id="trouble">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <div class="section-title">Troubleshooting & Support</div>
+      <div class="section-icon">🆘</div>
+    </div>
+    <div class="section-body">
+      <p style="margin-bottom:18px;">If the blue LED indicates an error or the device is not functioning properly:</p>
+      <div class="emergency-card">
+        <div class="emergency-icon-wrap">📞</div>
+        <div>
+          <div class="emergency-label">Head Office Support</div>
+          <div class="emergency-number">+94 70 477 5855</div>
+          <div class="emergency-sub">Sri Lanka Telecom — Copper Guard Support Line</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. NOTES -->
+  <section class="section" id="notes">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <div class="section-title">Important Notes</div>
+      <div class="section-icon">⚠️</div>
+    </div>
+    <div class="section-body">
+      <div class="notes-grid">
+        <div class="note-item">
+          <div class="note-icon">⚡</div>
+          <div class="note-text">Always follow correct polarity <strong>(+ / –)</strong> when connecting wires</div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">🔌</div>
+          <div class="note-text">Use <strong>only the provided power adapter</strong> (5V 2A)</div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">🔒</div>
+          <div class="note-text">Ensure <strong>all connections are secure</strong> before powering the device</div>
+        </div>
+        <div class="note-item">
+          <div class="note-icon">💧</div>
+          <div class="note-text">Keep the device <strong>protected from water</strong> and physical damage</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. SUMMARY -->
+  <section class="section" id="summary">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">Summary</div>
+      <div class="section-icon">✅</div>
+    </div>
+    <div class="section-body">
+      <div class="summary-box">
+        <div class="sum-icon">🛡️</div>
+        <div class="green-pill">Active Protection</div>
+        <p>Once installed and configured, <strong>Copper Guard</strong> will actively monitor and protect copper lines, helping prevent theft and maintain reliable service.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Sri Lanka Telecom</strong> &nbsp;|&nbsp; Copper Guard <span class="green">™</span> &nbsp;|&nbsp; Installation & User Manual<br>
+  <span style="font-size:0.72rem; margin-top:6px; display:block;">For support, contact: <span class="green">+94 70 477 5855</span></span>
+</footer>
+
+</body>
+</html>
